@@ -1,0 +1,96 @@
+.quick-event {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 2px 3px;
+    margin: 2px;
+    background-color: blue;
+    border-radius: 3px;
+}
+
+.quick-event_title, .quick-event_time {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--white);
+    cursor: default;
+    user-select: none;
+}
+
+.quick-event_title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.quick-event_time {
+    margin-left: 3px;
+    opacity: 0.7;
+}
+.quick-event .popup {
+    top: -21px;
+}
+.event {
+
+}
+
+.event__date {
+    position: relative;
+    opacity: 0.5;
+    border-bottom: 1px solid var(--border-clr);
+}
+.event__date h3 {
+    margin: 0;
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+    letter-spacing: 4px;
+}
+
+
+.event__content {
+    padding: 10px;
+    position: relative;
+}
+.event__title {
+    position: relative;
+    display: flex;
+}
+
+.event__title h4, .event__title p {
+    padding: 0;
+    margin: 0 0 0 5px;
+    max-width: 400px;
+}
+
+.event__title h4 {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.event__title p {
+    font-weight: 400;
+    font-size: 13px;
+}
+
+
+.event__title span {
+    width: 3px;
+    border-radius: 3px;
+    background-color: red;
+    margin-left: -5px;
+}
+.event__time {
+    display: flex;
+    flex-direction: column;
+}
+.event__time span {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.event__modified {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: var(--text-sec);
+}

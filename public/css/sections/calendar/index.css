@@ -1,0 +1,18 @@
+@import url("./month.css");
+@import url("./week.css");
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 3rem 0;
+}
+
+.calendar-nav__left h1 {
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+.calendar-nav__left h1 span {
+    color: var(--green);
+}

@@ -1,0 +1,51 @@
+* {
+    /*outline: 1px dashed red;*/
+}
+
+.relative {
+    position: relative;
+}
+.w-100 {
+    width: 100%;
+}
+.d-flex {
+    display: flex;
+}
+.d-inline {
+    display: inline-flex;
+}
+
+.d-none {
+    display: none;
+}
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+.flex-end {
+    justify-content: flex-end;
+}
+.baseline {
+    align-items: baseline;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+.mt-1 {
+    margin-top: 1rem;
+}
+.my-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.homepage {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="./css/scheme/light.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="./css/scheme/dark.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="./css/main.css">
+
+    <title>Home page</title>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar__left">
+                LOGO
+            </div>
+            <div class="navbar__middle">
+                <ul>
+                    <li class=''><a href='./index.html?_ijt=ien03evaglhs12etupij3pb283&_ij_reload=RELOAD_ON_SAVE'>Homepage</a>
+                    </li>
+                    <li class=''><a href='./calendar.html?_ijt=ien03evaglhs12etupij3pb283&_ij_reload=RELOAD_ON_SAVE'>Calendar</a>
+                    </li>
+                    <li class=''><a href='./events.html?_ijt=ien03evaglhs12etupij3pb283&_ij_reload=RELOAD_ON_SAVE'>Events</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar__right">
+                <ul>
+                    <li><a href="signin.html">sign in</a></li>
+                    <li><a href="signup.html">sign up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+</header>
+<main>
+    <section>
+        <div class="container-lg">
+            <nav class="calendar-nav">
+                <div class="calendar-nav__left">
+                    <h1>Oktober <span>2021</span></h1>
+                </div>
+                <div class="calendar-nav__middle btn-group">
+                    <a href="?type=year" class="btn">Year</a>
+                    <a href="?type=month" class="btn">Month</a>
+                    <a href="?type=week" class="btn">Week</a>
+                </div>
+                <div class="calendar-nav__right btn-group">
+                    <a href="?type=month&ym=<?=$prev_month?>" class="btn"> < </a>
+                    <a href="?type=month&ym=<?=$today_ym?>" class="btn">today</a>
+                    <a href="?type=month&ym=<?=$next_month?>" class="btn"> > </a>
+                </div>
+            </nav>
+            <div class="d-inline relative mb-1">
+                <button class="do_open btn btn--create">+</button>
+                <div class="popup-create popup left">
+                    <form class="create-event">
+                        <div class="create-event__head d-flex">
+                            <div class="form-input">
+                                <input class="create-event__title" placeholder="title" type="text">
+                            </div>
+                            <!--                            TYPES BOX-->
+                            <div class="create-event__type">
+                                <span data-id='${type_fk}' class='current-item ${type_color}'></span>
+
+                                <div class='popup left'>
+<!--                                    <div class="bg"></div>-->
+                                    <div class="item">work</div>
+                                    <div class="item">family</div>
+                                    <div class="item">privat</div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-input">
+                            <label class="d-flex align-center space-between"> date:
+                                <input type="date">
+                            </label>
+                        </div>
+                        <div class="form-input">
+                            <label class="d-flex align-center space-between"> all day:
+                                <input type="checkbox">
+                            </label>
+                        </div>
+
+                        <div class="create-event__time">
+                            <div class="form-input">
+                                <label class="d-flex align-center space-between">starts:
+                                    <input type="time">
+                                </label>
+
+                            </div>
+                            <div class="form-input">
+                                <label class="d-flex align-center space-between">ends:
+                                    <input type="time">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-input">
+                            <textarea placeholder="description"></textarea>
+                        </div>
+
+                        <input class="d-none" type="submit">
+                    </form>
+                </div>
+            </div>
+            <div class="month">
+                <div class="month_day-names">
+                    <div><span class="month_day-name">Mon</span></div>
+                    <div><span class="month_day-name">Tue</span></div>
+                    <div><span class="month_day-name">Wed</span></div>
+                    <div><span class="month_day-name">Thu</span></div>
+                    <div><span class="month_day-name">Fri</span></div>
+                    <div><span class="month_day-name">Sat</span></div>
+                    <div><span class="month_day-name">Sun</span></div>
+                </div>
+                <div class='month_week'>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>1</span>
+                 </span>
+                        <div class='month-week_events'>
+
+                            <div class='quick-event $past $class'>
+                                <span class='quick-event_title'>sport treiben</span>
+                                <span class='quick-event_time'>12:13</span>
+                            </div>
+                            <div class='quick-event $past $class'>
+                                <span class='quick-event_title'>sport treiben</span>
+                                <span class='quick-event_time'>12:13</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge active'>22</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge active'>3</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>4</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>5</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>6</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>7</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                </div>
+
+                <div class='month_week'>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>1</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge active'>2</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>3</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>4</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>5</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>6</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                    <div class='day-content weekend'>
+                 <span class='day-number'>
+                     <span class='badge'>7</span>
+                 </span>
+                        <div class='month-week_events'></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+<script type="module" src="./js/index.js">
+
+</script>
+</body>
+</html>

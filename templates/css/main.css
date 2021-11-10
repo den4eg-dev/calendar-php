@@ -1,0 +1,33 @@
+@import url("./fonts.css");
+@import url("./typography.css");
+
+@import url("vendor/normalize.css");
+
+/*variables*/
+@import url("./vars/colors.css");
+@import url("./vars/utills.css");
+
+/*global styles*/
+@import url("./global.css");
+
+/* grid*/
+@import url("./grid.css");
+
+/*need refactor*/
+@import url("./temp.css");
+
+/*components*/
+@import url("./components/buttons.css");
+@import url("./components/event.css");
+@import url("./components/sidebar.css");
+@import url("components/popup.css");
+@import url("./components/forms/form-auth.css");
+@import url("./components/forms/create-event.css");
+
+/*sections*/
+@import url("./sections/header.css");
+@import url("./sections/calendar/index.css");
+@import url("./sections/calendar/month.css");
+@import url("./sections/events/eventsList.css");
+
+

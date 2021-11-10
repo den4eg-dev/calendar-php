@@ -1,0 +1,6 @@
+
+:root {
+    /*sidebar width*/
+    --sidebar-min-width: 200px;
+    --navbar-height: 60px;
+}

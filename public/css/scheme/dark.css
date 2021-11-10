@@ -1,0 +1,35 @@
+:root {
+    --text-sec: #9E9E9E;
+    --text-prim: #E1E1E1;
+    --bg-prim: #121212;
+    --bg-sec: #1F1F1F;
+    --green: #55E074;
+    --black: #000000;
+    --white: #E1E1E1;
+
+    /*HSL*/
+    --purple-h: 267;
+    --purple-s: 95%;
+    --purple-l: 76%;
+    --purple: hsl(var(--purple-h), var(--purple-l), var(--purple-l));
+
+    --purple-dark: hsl(var(--purple-h), var(--purple-l), calc(var(--purple-l) / 1.4));
+
+
+
+    --btn-border: rgba(198, 197, 197, 0.59);
+    --header-border: rgba(79, 79, 79, 0.59);
+    --border-clr: rgba(79, 79, 79, 1);
+    --badge-clr: red;
+
+    --badge-work: blue;
+    --badge-family: #d3b708;
+    --badge-privat: green;
+    --weekend-clr: rgb(42, 42, 42);
+
+    --type-work: blue;
+
+    /*--border-gradient:;*/
+
+    --filter-invert: invert(1);
+}
