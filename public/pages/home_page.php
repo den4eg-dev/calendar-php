@@ -6,7 +6,7 @@ $layout = new Home();
 
 $layout->setTitle("Welcome");
 $layout->getHeader();
-$layout->getContent('<h1>HOME PAGE</h1>', true);
+$layout->getContent('<div class="container-lg"><h1>HOME PAGE</h1></div>', true);
 
 
 
