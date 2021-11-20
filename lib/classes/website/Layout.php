@@ -16,6 +16,7 @@ class Layout
     {
         return $this->javaScripts;
     }
+
     public function setJavaScripts(array | string $scripts): void
     {
         if(is_array($scripts)) {
@@ -27,6 +28,7 @@ class Layout
         }
 
     }
+
 
     public function setTitle(string $title): void
     {

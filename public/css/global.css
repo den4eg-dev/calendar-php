@@ -1,3 +1,6 @@
+:root {
+    color-scheme: dark light;
+}
 * {
     box-sizing: border-box;
 }

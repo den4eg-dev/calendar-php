@@ -1,10 +1,13 @@
 <?php
 $scripts = $this->getJavaScripts();
+$scripts_output = '';
+foreach ($scripts as $script) {
+    $scripts_output .= "<script type='module' src='/public/js/$script.js'></script>";
+}
+
 ?>
 
 </main>
-<?php foreach ($scripts as $script) {
-    echo "<script type='module' src='/public/js/$script.js'></script>";
-} ?>
+<?=$scripts_output?>
 </body>
 </html>

@@ -17,7 +17,7 @@
 @import url("./temp.css");
 
 /*components*/
-@import url("./components/theme-switcher.css");
+@import url("components/scheme-switcher.css");
 @import url("./components/buttons.css");
 @import url("./components/event.css");
 @import url("./components/sidebar.css");

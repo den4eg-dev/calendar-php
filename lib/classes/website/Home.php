@@ -6,6 +6,7 @@ class Home extends Layout
 
     public function __construct()
     {
+
     }
 
 }
