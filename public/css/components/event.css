@@ -3,13 +3,21 @@
     position: relative;
     justify-content: space-between;
     padding: 2px 3px;
-    margin: 2px;
+    margin: 2px 4px;
     background-color: blue;
     border-radius: 3px;
 }
 
-.quick-event_title, .quick-event_time {
-    font-size: 10px;
+.quick-event.past .quick-event_title,
+.quick-event.past  .quick-event_time {
+    opacity: .8;
+    text-decoration: line-through;
+}
+
+
+.quick-event_title,
+.quick-event_time {
+    font-size: 12px;
     font-weight: 400;
     color: var(--white);
     cursor: default;
@@ -25,6 +33,7 @@
 .quick-event_time {
     margin-left: 3px;
     opacity: 0.7;
+    font-size: 10px;
 }
 .quick-event .popup {
     top: -21px;

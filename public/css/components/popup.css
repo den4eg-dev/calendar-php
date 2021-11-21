@@ -8,8 +8,8 @@
     background-color: var(--bg-sec);
     top: -15px;
     opacity: 0;
-    transform: scale(0) translate(-50px,20px);
-    transform-origin: left top;
+    /*transform: scale(0) translate(-50px,20px);*/
+    /*transform-origin: left top;*/
     transition: opacity .5s, transform .4s;
 
     border-radius: 5px;
@@ -18,7 +18,7 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.popup::before {
+.popup:before {
     content: "";
     position: absolute;
     width: 15px;
@@ -32,7 +32,7 @@
 
 }
 
-.popup::after {
+.popup:after {
     content: '';
     position: absolute;
     z-index: -1;
@@ -44,19 +44,24 @@
     border-radius: inherit;
 }
 
+.popup.left {
+    right: calc(100% + 30px);
+    transform-origin: right 20px;
+    transform: scale(0) translate(100px,20px);
+}
+.popup.right {
+    left: calc(100% + 20px);
+    transform-origin: left 20px;
+    transform: scale(0) translate(-100px,20px);
+}
 
 .popup.show {
     display: block;
 }
+
 .popup.fadeIn {
     transform: scale(1) translate(0,0);
     opacity: 1;
-}
-.popup.left {
-    right: calc(100% + 30px);
-}
-.popup.right {
-    left: calc(100% + 20px);
 }
 
 .popup.right:before {

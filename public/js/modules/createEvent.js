@@ -6,8 +6,8 @@ const onTypeClick = (target) => {
     showPopup(typePopup)
 }
 
-const isChecked = (e) => {
-    console.dir(e.target.checked)
+export const isChecked = (e) => {
+    // console.dir(e.target.checked)
     const timeBlock = document.querySelector('.create-event__time')
     if(e.target.checked) {
         timeBlock.classList.add('hide')
@@ -24,8 +24,6 @@ export const createEvent = (target) => {
         titleInput.focus()
 
         const allDayChecked = document.querySelector('.do_allDayCheck')
-
-
         allDayChecked.addEventListener('change',isChecked)
 
 

@@ -52,7 +52,6 @@ class Calendar extends Layout
         $this->week_days = date('N', $this->timestamp);
 
 
-
 //        $this->get_date_info();
     }
 
@@ -61,16 +60,17 @@ class Calendar extends Layout
 //    +++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
-   public function setCalendarType() {
-       if (isset($_GET['ym'])) {
-           $this->ym = $_GET['ym'];
-       } else {
-           $this->ym = date('Y-m');
-       }
-        if(!isset($_GET["type"])) {
+    public function setCalendarType()
+    {
+        if (isset($_GET['ym'])) {
+            $this->ym = $_GET['ym'];
+        } else {
+            $this->ym = date('Y-m');
+        }
+        if (!isset($_GET["type"])) {
             redirect("/calendar?type=month&ym=$this->ym");
         }
-   }
+    }
 
 
     public function prevDate(): string
@@ -92,7 +92,7 @@ class Calendar extends Layout
 
                 $past = date('Y-m-j') > $event["event_date"] ? 'past' : '';
 
-                $output .= "<div class='quick-event $past'>
+                $output .= "<div class='quick-event $past' id-data='" . $event["event_pk"] . "'>
                              <span class='quick-event_title'>" . $event['event_title'] . "</span>
                              <span class='quick-event_time'>" . $event['time_start'] . "</span>
                         </div>";

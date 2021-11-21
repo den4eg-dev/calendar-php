@@ -37,14 +37,14 @@ foreach ($auth_links as $auth_link => $path) {
 
    <!--flush effect    -->
     <script>
-        // if (matchMedia('(prefers-color-scheme:dark)').media === 'not all') {
-        //     document.documentElement.style.display = 'none';
-        //     document.head.insertAdjacentHTML(
-        //         'beforeend',
-        //         "<Link rel='stylesheet'" +
-        //         " href='styles/light.css' " +
-        //         "onload='document.documentElement.style.display=\')'" >)
-        // }
+        if (matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
+            document.documentElement.style.display = 'none';
+            document.head.insertAdjacentHTML(
+                'beforeend',
+                "<Link rel='stylesheet'" +
+                " href='/public/css/scheme/light.css' " +
+                "onload='document.documentElement.style.display=''>");
+        }
     </script>
 
     <link rel="stylesheet" href="/public/css/main.css">
@@ -74,9 +74,15 @@ foreach ($auth_links as $auth_link => $path) {
                 </ul>
             </div>
             <div class="scheme-switcher">
+                <label>
                     <input class="scheme-switcher__radio" name="scheme-switcher" value="dark" type="radio">
+                </label>
+                <label>
                     <input class="scheme-switcher__radio" name="scheme-switcher" value="auto" checked type="radio">
+                </label>
+                <label>
                     <input class="scheme-switcher__radio" name="scheme-switcher" value="light" type="radio">
+                </label>
             </div>
         </nav>
     </div>

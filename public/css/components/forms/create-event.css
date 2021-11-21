@@ -15,6 +15,10 @@
     overflow: hidden;
     max-height: 500px;
 }
+
+.create-event__time .form-input {
+    margin: 3px 2px;
+}
 .create-event__time.hide {
     max-height: 0;
 }
@@ -31,7 +35,7 @@
 }
 
 .create-event input::-webkit-calendar-picker-indicator {
-    filter: var(--filter-invert);
+    /*filter: var(--filter-invert);*/
 }
 .create-event input[type=date]::-webkit-calendar-picker-indicator {
     margin-left: -18px;

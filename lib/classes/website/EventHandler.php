@@ -17,10 +17,20 @@ class EventHandler extends Layout
         $this->event_pk = $event_pk;
     }
 
-    public function selectOne($query): array
+    public function selectOne(): array
     {
-        $data = $this->db->select($query);
-        return $data[0];
+        $sql_query = "SELECT * FROM events
+    
+                      JOIN events__types
+                      ON events.type_fk = events__types.type_pk
+        
+                      WHERE event_pk = '$this->event_pk'";
+
+        $data = $this->db->select($sql_query);
+
+        if(isset($data[0]))  return $data[0];
+
+        return $data;
     }
 
     public function update(array $data)

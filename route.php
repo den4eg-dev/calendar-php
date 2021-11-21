@@ -40,6 +40,18 @@ function include_route_path(string $page, bool $auth = false,): void
         include __DIR__ . "/public/pages/" . $page . ".php";
     }
 }
+function include_api_path(string $page, bool $auth = false,): void
+{
+    if ($auth) {
+        if (isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true) {
+            include __DIR__ . "/lib/ajax/" . $page . ".php";
+        } else {
+            header("Location:/login");
+        }
+    } else {
+        include __DIR__ . "/lib/ajax/" . $page . ".php";
+    }
+}
 
 match ($_SERVER["REQUEST_URI"]) {
     "/" => redirect('/home'),
@@ -49,6 +61,8 @@ match ($_SERVER["REQUEST_URI"]) {
     "/events/" . get_event() . @$get_request => include_route_path('eventDetails_page'),
     "/login" . @$get_request => include_route_path('login_page'),
     "/signup" . @$get_request => include_route_path('signup_page'),
+    "/api/event" . @$get_request => include_api_path('getEvent'),
     default => include_route_path('404_page'),
 };
+
 

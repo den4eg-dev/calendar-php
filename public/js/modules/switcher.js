@@ -1,11 +1,10 @@
 export const switcher = () => {
-    console.log('im here')
+
     const lightStyles = document.querySelectorAll('link[rel=stylesheet][media*=prefers-color-scheme][media*=light]');
     const darkStyles = document.querySelectorAll('link[rel=stylesheet][media*=prefers-color-scheme][media*=dark]');
     const darkSchemeMedia = matchMedia('(prefers-color-scheme: dark)');
     const switcherRadios = document.querySelectorAll('.scheme-switcher__radio');
-    console.log(switcherRadios)
-    console.log(lightStyles)
+
 
 
     const setupSwitcher = () => {

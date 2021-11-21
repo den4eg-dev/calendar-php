@@ -17,10 +17,12 @@
 
 .btn:hover {
     background-color: var(--purple-dark);
+    color: var(--text-hover);
 }
 .btn:focus {
     background-color: var(--purple-dark);
     outline: 1px solid var(--purple);
+    color: var(--text-hover);
 }
 
 
