@@ -1,6 +1,0 @@
-.events-list {
-    --padding: 20px;
-    width: calc(100% - var(--padding) * 2);
-    padding: var( --padding);
-    margin: 0 auto;
-}
