@@ -1,13 +1,12 @@
 .create-event {
     position: relative;
-    width: 100%;
+    min-width: 210px;
+    max-width: 300px;
     padding: 15px;
     background-color: inherit;
     display: flex;
     flex-direction: column;
     gap: 10px;
-
-
 }
 
 .create-event__time {
@@ -68,25 +67,27 @@
 
 
 .create-event__type {
-
-    position: relative;
-    width: 30px;
-    height: 23px;
-    background-color: var(--bg-sec);
-    /*border: 1px solid var(--border-clr);*/
     display: grid;
-    place-content: center;
-    border: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-color: var(--bg-sec);
+    border:1px solid var(--border-clr);
     border-radius: 5px;
+
     margin-left: 10px;
+}
+.create-event__type:hover {
+    background-color: var(--bg-prim);
 }
 
 .create-event__type .current-item {
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     border-radius: 3px;
-    background-color: blue;
     cursor: pointer;
 
 }

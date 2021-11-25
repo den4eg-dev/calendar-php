@@ -19,12 +19,12 @@ $types = $fetch_types->selectTypes();
         </div>
         <!--                            TYPES BOX-->
         <div class="create-event__type">
-            <span data-id='<?= $types[0]["type_pk"] ?>' class='current-item <?= $types[0]["type_name"] ?>'></span>
-
+            <span name="" data-id='<?= $types[0]["type_pk"] ?>' class='current-item type--clr-<?= $types[0]["type_name"] ?>'></span>
+            <input type="hidden" name="type_fk" value="<?= $types[0]["type_pk"] ?>">
             <div class='popup right'>
                 <?php
                 foreach ($types as $type) {
-                    echo "<div id-data='" . $type["type_pk"] . "' class='item " . $type["type_name"] . "'>" . $type["type_name"] . "</div> \n";
+                    echo "<div data-id='" . $type["type_pk"] . "' class='item " . $type["type_name"] . "'>" . $type["type_name"] . "</div> \n";
                 }
                 ?>
 

@@ -55,7 +55,6 @@ class Calendar extends Layout
     }
 
 
-
 //++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -91,7 +90,7 @@ class Calendar extends Layout
 
                 $past = date('Y-m-j') > $event["event_date"] ? 'past' : '';
 
-                $output .= "<div class='quick-event $past' id-data='" . $event["event_pk"] . "'>
+                $output .= "<div class='type--clr-" . $event['type_name'] . " quick-event $past' id-data='" . $event["event_pk"] . "'>
                              <span class='quick-event_title'>" . $event['event_title'] . "</span>
                              <span class='quick-event_time'>" . $event['time_start'] . "</span>
                         </div>";

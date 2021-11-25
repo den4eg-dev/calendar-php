@@ -47,3 +47,9 @@
     line-height: 30px;
     cursor: pointer;
 }
+.btn--delete {
+    background-color: #d20404;
+}
+.btn--delete:hover {
+    background-color: darkred;
+}

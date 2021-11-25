@@ -42,7 +42,9 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-
+.m-auto {
+    margin: auto;
+}
 .homepage {
     margin-top: 4rem;
     display: flex;

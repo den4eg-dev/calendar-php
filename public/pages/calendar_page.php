@@ -6,7 +6,7 @@ use website\EventHandler;
 if(isset($_POST['create'])) {
     $data = [
         'event_title' => $_POST['title'],
-        'type_fk' => 3,
+        'type_fk' => $_POST['type_fk'],
         'user_fk' => 61,
         'event_date' => $_POST['date'],
         'time_start' => $_POST['start'],

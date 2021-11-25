@@ -60,7 +60,7 @@ class EventList extends Layout
         $sql = "SELECT * FROM events
                 JOIN events__types
                 ON events.type_fk = events__types.type_pk
-                ORDER by created_at DESC";
+                ORDER by event_date DESC";
 
         $this->events = $db->select($sql);
 

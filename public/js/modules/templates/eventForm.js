@@ -24,7 +24,7 @@ export const eventForm = async (props, create = false) => {
         typesOutput += `<div data-id="${type.type_pk}" class="item ${type.type_name}">${type.type_name}</div> \n`
     })
 
-    const {event_title, event_date, time_start, time_end, description} = props
+    const {event_title, event_date, time_start, time_end, description,type_name,type_fk} = props
     const isChecked = false
 
     return `<form method="post" class="create-event">
@@ -34,12 +34,10 @@ export const eventForm = async (props, create = false) => {
         </div>
         <!--                            TYPES BOX-->
         <button class="create-event__type">
-            <span data-id='${currentType.type_pk}' class='current-item .type--clr-${currentType.type_name}'></span>
-
+            <span data-id='${type_fk}' class='current-item type--clr-${type_name}'></span>
             <div class='popup right'>
                 ${typesOutput}
             </div>
-
         </button>
     </div>
 
