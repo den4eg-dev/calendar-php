@@ -24,8 +24,7 @@ export const eventForm = async (props, create = false) => {
         typesOutput += `<div data-id="${type.type_pk}" class="item ${type.type_name}">${type.type_name}</div> \n`
     })
 
-    const {event_pk, event_title, event_date, time_start, time_end, description, type_color, type_fk} = props
-    // console.log(props)
+    const {event_title, event_date, time_start, time_end, description} = props
     const isChecked = false
 
     return `<form method="post" class="create-event">
