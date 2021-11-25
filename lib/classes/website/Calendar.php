@@ -52,13 +52,12 @@ class Calendar extends Layout
         $this->week_days = date('N', $this->timestamp);
 
 
-//        $this->get_date_info();
     }
 
 
 
-//    +++++++++++++++++++++++++++++++++++++++
 //++++++++++++++++++++++++++++++++++++++++++++++++
+
 
     public function setCalendarType()
     {

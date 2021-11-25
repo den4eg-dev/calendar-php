@@ -1,10 +1,8 @@
 import {showPopup} from "./helpers.js";
+import {eventTypesHandler} from "./eventTypesHandler.js";
 
 
-const onTypeClick = (target) => {
-    const typePopup = target.querySelector('.popup')
-    showPopup(typePopup)
-}
+
 
 export const isChecked = (e) => {
     // console.dir(e.target.checked)
@@ -26,14 +24,7 @@ export const createEvent = (target) => {
         const allDayChecked = document.querySelector('.do_allDayCheck')
         allDayChecked.addEventListener('change',isChecked)
 
-
-
-
-        const typePopup = document.querySelector('.create-event__type')
-        typePopup.addEventListener('click', function () {
-            onTypeClick(this)
-        })
-
+        eventTypesHandler(popup)
     }
 
     target.addEventListener('click', onClick)

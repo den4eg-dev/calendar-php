@@ -62,6 +62,7 @@ match ($_SERVER["REQUEST_URI"]) {
     "/login" . @$get_request => include_route_path('login_page'),
     "/signup" . @$get_request => include_route_path('signup_page'),
     "/api/event" . @$get_request => include_api_path('getEvent'),
+    "/api/types" . @$get_request => include_api_path('eventTypes'),
     default => include_route_path('404_page'),
 };
 

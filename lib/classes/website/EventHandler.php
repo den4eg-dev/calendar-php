@@ -32,6 +32,13 @@ class EventHandler extends Layout
 
         return $data;
     }
+    public function selectTypes(): array
+    {
+        $sql_query = "SELECT * FROM events__types";
+
+        return $this->db->select($sql_query);
+
+    }
 
     public function update(array $data)
     {

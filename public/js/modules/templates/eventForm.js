@@ -1,6 +1,23 @@
-export const eventForm = (props) => {
+import {getTypes} from "../api/getTypes.js";
+import {createBtn, deleteBtn} from "./buttons.js";
 
-    const {event_pk,event_title,event_date,time_start,time_end,description,type_color,type_fk} = props
+const fetchTypes = async () => {
+    return await getTypes()
+}
+
+export const eventForm = async (props, create = false) => {
+
+
+    const types = await fetchTypes()
+
+
+    let currentType = types[0]
+    let typesOutput = ``
+    types.forEach(type => {
+        typesOutput += `<div id-data="${type.type_pk}" class="item ${type.type_name}">${type.type_name}</div> \n`
+    })
+
+    const {event_pk, event_title, event_date, time_start, time_end, description, type_color, type_fk} = props
     // console.log(props)
     const isChecked = false
 
@@ -10,18 +27,14 @@ export const eventForm = (props) => {
             <input value=${event_title} name="title" class="create-event__title" placeholder="title" type="text" required>
         </div>
         <!--                            TYPES BOX-->
-        <div class="create-event__type">
-            <span data-id='${type_fk}' class='current-item ${type_color}'></span>
+        <button class="create-event__type">
+            <span data-id='${currentType.type_pk}' class='current-item .type--clr-${currentType.type_name}'></span>
 
             <div class='popup right'>
-                <!--                                    <div class="bg"></div>-->
-                <div class="item">work</div>
-                <div class="item">family</div>
-                <div class="item">privat</div>
-
+                ${typesOutput}
             </div>
 
-        </div>
+        </button>
     </div>
 
     <div class="form-input">
@@ -55,8 +68,6 @@ export const eventForm = (props) => {
     <div class="form-input">
         <textarea name="description" placeholder="description">${description}</textarea>
     </div>
-<!--    <div>-->
-<!--        <button name="create" type="submit" class="btn btn&#45;&#45;radius">Create</button>-->
-<!--    </div>-->
+        ${create ? createBtn() : deleteBtn()}
 </form>`
 }

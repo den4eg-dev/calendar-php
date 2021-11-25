@@ -1,8 +1,7 @@
-// noinspection DuplicatedCode
 import {showPopup} from "./helpers.js";
 import {eventForm} from "./templates/eventForm.js";
-import {getOneEvent} from "./api/getEvent.js";
-import {isChecked} from "./createEvent.js";
+import {getOneEvent} from "./api/getOneEvent.js";
+import {eventTypesHandler} from "./eventTypesHandler.js";
 
 const createEventModal = (e) => {
     let classDependsFromWindowWidth = 'right';
@@ -28,9 +27,9 @@ const onDoubleClick = async (e, currentEl) => {
     showPopup(popup, true)
 
     const props = await getOneEvent(eventPk)
-    popup.innerHTML = eventForm(props)
+    popup.innerHTML = await eventForm(props)
 
-
+    eventTypesHandler(popup)
     const allDayChecked =  currentEl.querySelector('.do_allDayCheck')
     const timeBlock = currentEl.querySelector('.create-event__time')
 

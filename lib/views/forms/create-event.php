@@ -1,8 +1,16 @@
 <?php
+
+use website\EventHandler;
+
 $current_date = $this->today;
 $current_time = date('H:i');
 $timestamp = strtotime($current_time) + 60 * 60;
 $time_plus_one_hour = date('H:i', $timestamp);
+
+$fetch_types = new EventHandler();
+$types = $fetch_types->selectTypes();
+
+
 ?>
 <form method="post" class="create-event">
     <div class="create-event__head d-flex">
@@ -11,13 +19,14 @@ $time_plus_one_hour = date('H:i', $timestamp);
         </div>
         <!--                            TYPES BOX-->
         <div class="create-event__type">
-            <span data-id='${type_fk}' class='current-item ${type_color}'></span>
+            <span data-id='<?= $types[0]["type_pk"] ?>' class='current-item <?= $types[0]["type_name"] ?>'></span>
 
             <div class='popup right'>
-                <!--                                    <div class="bg"></div>-->
-                <div class="item">work</div>
-                <div class="item">family</div>
-                <div class="item">privat</div>
+                <?php
+                foreach ($types as $type) {
+                    echo "<div id-data='" . $type["type_pk"] . "' class='item " . $type["type_name"] . "'>" . $type["type_name"] . "</div> \n";
+                }
+                ?>
 
             </div>
 
@@ -26,7 +35,7 @@ $time_plus_one_hour = date('H:i', $timestamp);
 
     <div class="form-input">
         <label class="d-flex align-center space-between"> date:
-            <input name="date" type="date" value="<?=$current_date?>">
+            <input name="date" type="date" value="<?= $current_date ?>">
         </label>
     </div>
     <div>
@@ -41,13 +50,13 @@ $time_plus_one_hour = date('H:i', $timestamp);
     <div class="create-event__time">
         <div class="form-input">
             <label class="d-flex align-center space-between">starts:
-                <input name="start" type="time" value="<?=$current_time?>">
+                <input name="start" type="time" value="<?= $current_time ?>">
             </label>
 
         </div>
         <div class="form-input">
             <label class="d-flex align-center space-between">ends:
-                <input name="end" type="time" value="<?=$time_plus_one_hour?>">
+                <input name="end" type="time" value="<?= $time_plus_one_hour ?>">
             </label>
         </div>
     </div>
