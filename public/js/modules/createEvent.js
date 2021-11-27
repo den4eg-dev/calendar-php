@@ -12,21 +12,20 @@ export const isChecked = (e) => {
     }else timeBlock.classList.remove('hide')
 }
 
+const onClick = (e) => {
+    const popup = e.target.parentNode.querySelector('.popup')
+    showPopup(popup)
+
+    const titleInput = document.querySelector('.create-event__title')
+    titleInput.focus()
+
+    const allDayChecked = document.querySelector('.do_allDayCheck')
+    allDayChecked.addEventListener('change',isChecked)
+
+    eventTypesHandler(popup)
+}
+
+
 export const createEvent = (target) => {
-
-    const onClick = (e) => {
-        const popup = e.target.parentNode.querySelector('.popup')
-        showPopup(popup)
-
-        const titleInput = document.querySelector('.create-event__title')
-        titleInput.focus()
-
-        const allDayChecked = document.querySelector('.do_allDayCheck')
-        allDayChecked.addEventListener('change',isChecked)
-
-        eventTypesHandler(popup)
-    }
-
     target.addEventListener('click', onClick)
-
 }

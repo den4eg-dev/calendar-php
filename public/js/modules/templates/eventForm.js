@@ -32,7 +32,7 @@ export const eventForm = async (props, create = false) => {
         <!--                            TYPES BOX-->
         <button class="create-event__type">
             <span data-id='${type_fk}' class='current-item type--clr-${type_name}'></span>
-            <div class='popup right'>
+            <div class='popup typePopup right'>
                 ${typesOutput}
             </div>
         </button>

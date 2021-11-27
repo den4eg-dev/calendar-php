@@ -1,7 +1,7 @@
 export const outSideClick = (element, remove = false) => {
     const onClickAndRemove = (e) => {
         const path = e.path || (e.composedPath && e.composedPath());
-        if (path.includes(element) ) return
+        if (path.includes(element) || element.closest('.typePopup') ) return
 
         hidePopup(element, remove)
 

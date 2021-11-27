@@ -17,50 +17,60 @@ const createEventModal = (e) => {
     // element.classList.add(classDependsFromHeight);
     return element;
 };
-const addInputListener = (form, nameInput = "", listener = "blur") => {
-    const element = form.querySelector(`input[name=${nameInput}]`)
 
-    element.addEventListener(listener, (e) => updateInputData(e, nameInput))
+const addInputListener = (form, nameInput, listener ,currentEventProps) => {
+    const element = form.querySelector(`[name=${nameInput}]`)
+    element.addEventListener(listener, (e) => updateInputData(e, nameInput,currentEventProps))
 }
-const updateInputData = (e, nameInput) => {
+
+const updateInputData = (e, nameInput,currentEventProps) => {
+    const {event_pk: current_event_pk} = currentEventProps;
 
     const input = e.target
-    const pk = 87
-
+    console.log("INPUT ",input)
     const formData = new FormData();
     formData.append('event', 'update')
-    formData.append('event_pk', `${pk}`)
-    formData.append('event_title', `${input.value}`)
 
-    // switch (nameInput) {
-    //     case 'date':
-    //         formData.append('event_date', `${input.value}`);
-    //         break;
-    //     case 'start':
-    //         formData.append('event_start', `${input.value}`);
-    //         break;
-    //     case 'end':
-    //         formData.append('event_end', `${input.value}`);
-    //         break;
-    //     case 'allDay':
-    //         //TODO check name of input
-    //         formData.append('event_allDay', `${input.value}`);
-    //         break;
-    //     case 'title':
-    //         formData.append('event_title', `${input.value}`);
-    //         break;
-    //     default:
-    //         break;
-    // }
+    formData.append('event_pk', `${current_event_pk}`)
+
+    switch (nameInput) {
+        case 'date':
+            formData.append('event_date', `${input.value}`);
+            break;
+        case 'start':
+            formData.append('time_start', `${input.value}`);
+            break;
+        case 'end':
+            formData.append('time_end', `${input.value}`);
+            break;
+        case 'allDay':
+            formData.append('allDay', `${input.value}`);
+            break;
+        case 'description':
+            console.log(input.value)
+            formData.append('description', `${input.value}`);
+            break;
+        case 'title':
+            formData.append('event_title', `${input.value}`);
+            break;
+        default:
+            break;
+    }
 
     updateEvent(formData).then(res=> {
-
         console.log(res)
-        const id = `[data-id =${res.event_pk}]`
-        const quickEventEl = document.querySelector('.quick-event[data-id="87"]')
+        const {event_pk,event_title,time_start} = res;
+        const id =`[data-id="${event_pk}"]`
 
-        console.log(quickEventEl)
+        const quickEventEl = document.querySelector(id)
+        const quickEventElTitle = quickEventEl.querySelector('.quick-event_title')
+        const quickEventTime = quickEventEl.querySelector('.quick-event_time')
 
+        quickEventElTitle.innerHTML = event_title
+        quickEventTime.innerHTML = time_start
+
+        const className = quickEventEl.className
+        // console.log(className.includes('type--clr'))
 
         // type--clr-private quick-event past
     })
@@ -83,7 +93,7 @@ const onDoubleClick = async (e, currentEl) => {
 
     const form = popup.querySelector('.create-event')
 
-    eventTypesHandler(popup)
+    eventTypesHandler(popup,eventPk)
     const allDayChecked = currentEl.querySelector('.do_allDayCheck')
 
     const timeBlock = currentEl.querySelector('.create-event__time')
@@ -95,7 +105,13 @@ const onDoubleClick = async (e, currentEl) => {
     })
 
 
-    addInputListener(form, 'title', 'blur')
+    addInputListener(form, 'title', 'input',props)
+    addInputListener(form, 'description', 'input',props)
+    addInputListener(form, 'date', 'change',props)
+    addInputListener(form, 'start', 'change',props)
+    addInputListener(form, 'end', 'change',props)
+    addInputListener(form, 'allDay', 'change',props)
+    addInputListener(form, 'delete', 'click',props)
 
 
 }

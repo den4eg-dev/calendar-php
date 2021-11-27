@@ -1,14 +1,17 @@
 import {hidePopup, showPopup} from "./helpers.js";
+import {updateEvent} from "./api/updateEvent.js";
 
 
-const onTypeClick = (e,target) => {
+const onTypeClick = (e, target, eventPk) => {
     e.preventDefault()
     const typePopup = target.querySelector('.popup')
+
     // showPopup(typePopup)
+
     typePopup.classList.add("show")
-    setTimeout(()=>{
+    setTimeout(() => {
         typePopup.classList.add("fadeIn")
-    },200)
+    }, 200)
 
     const typeElements = typePopup.querySelectorAll(".item")
 
@@ -21,33 +24,44 @@ const onTypeClick = (e,target) => {
             let currentTypePk = currentType.getAttribute("data-id")
 
             if (typePk === currentTypePk) return
+            if (eventPk) {
+                const formData = new FormData()
+
+                formData.append('event', 'update')
+                formData.append('event_pk', `${eventPk}`)
+                formData.append('type_fk', `${typePk}`)
+
+                updateEvent(formData).then(res => {
+                    const {event_pk,type_name} = res
+
+                    const id =`[data-id="${event_pk}"]`
+                    const quickEventEl = document.querySelector(id)
+
+                    // typePopup.classList.remove("show")
+                    // hidePopup(typePopup)
+                })
+            }
+
             currentType.className = `current-item type--clr-${item.innerText}`
             currentType.setAttribute("data-id", typePk)
 
             const hiddenInput = target.querySelector("input[type=hidden]")
             hiddenInput ? hiddenInput.value = typePk : null
-            // hidePopup(typePopup)
-
-
-
 
             typePopup.classList.remove("fadeIn")
-            setTimeout(()=>{
+            setTimeout(() => {
                 typePopup.classList.remove("show")
-            },200)
-
+            }, 200)
         })
     })
 
 
-
-
 }
 
-export const eventTypesHandler = (element) => {
+export const eventTypesHandler = (element, eventPk) => {
     const typePopup = element.querySelector('.create-event__type')
     typePopup.addEventListener('click', function (e) {
-        onTypeClick(e,this)
+        onTypeClick(e, this, eventPk)
     })
 }
 
