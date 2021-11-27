@@ -21,7 +21,6 @@ function get_event(): string
     $query_param = "";
     if ($get_query_param[count($get_query_param) - 2] === "events") {
         $query_param = $get_query_param[count($get_query_param) - 1];
-        $_SESSION['current_event'] = $query_param;
     }
 
     return $query_param;
@@ -61,7 +60,7 @@ match ($_SERVER["REQUEST_URI"]) {
     "/events/" . get_event() . @$get_request => include_route_path('eventDetails_page'),
     "/login" . @$get_request => include_route_path('login_page'),
     "/signup" . @$get_request => include_route_path('signup_page'),
-    "/api/event" . @$get_request => include_api_path('getEvent'),
+    "/api/event" . @$get_request => include_api_path('event'),
     "/api/types" . @$get_request => include_api_path('eventTypes'),
     default => include_route_path('404_page'),
 };

@@ -27,9 +27,9 @@ class EventHandler extends Layout
                       WHERE event_pk = '$this->event_pk'";
 
         $data = $this->db->select($sql_query);
+//        var_dump($data);
 
         if(isset($data[0]))  return $data[0];
-
         return $data;
     }
     public function selectTypes(): array
@@ -42,6 +42,7 @@ class EventHandler extends Layout
 
     public function update(array $data)
     {
+
         $sql_query = "";
 
         $count = 0;
@@ -54,13 +55,15 @@ class EventHandler extends Layout
                 $sql_query .= "$key='$value'";
             }
         }
-        echo $sql_query;
+
 
         $query = "UPDATE events 
                 SET " . $sql_query . "
                 WHERE event_pk = " . $this->event_pk;
 
+
         $this->db->update($query, $data);
+
     }
 
     public function create(array $data)

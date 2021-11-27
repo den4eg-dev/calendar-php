@@ -140,7 +140,7 @@ left: calc(100% + 20px);
 
 }
 .type--clr-family {
-    background-color: #d3b708;
+    background-color: #D35A08;
 
 }
 .type--clr-private {
@@ -157,7 +157,7 @@ left: calc(100% + 20px);
     background-color: rebeccapurple;
 }
 .create-event__type .item.family:before {
-    background-color: #d3b708;
+    background-color: #D35A08;
 }
 
 .create-event__type .item:hover {

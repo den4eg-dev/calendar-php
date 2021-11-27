@@ -10,10 +10,7 @@ export const eventForm = async (props, create = false) => {
 
     const types = await fetchTypes()
 
-
-    let currentType = types[0]
     let typesOutput = ``
-
 
     types.forEach(type => {
         /**

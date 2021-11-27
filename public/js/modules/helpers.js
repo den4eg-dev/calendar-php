@@ -1,6 +1,5 @@
 export const outSideClick = (element, remove = false) => {
     const onClickAndRemove = (e) => {
-        console.log(element)
         const path = e.path || (e.composedPath && e.composedPath());
         if (path.includes(element) ) return
 
