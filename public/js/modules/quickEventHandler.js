@@ -1,6 +1,6 @@
 import {showPopup} from "./helpers.js";
 import {eventForm} from "./templates/eventForm.js";
-import {getOneEvent} from "./api/getOneEvent.js";
+import {getOneEvent,deleteOneEvent} from "./api/getOneEvent.js";
 import {eventTypesHandler} from "./eventTypesHandler.js";
 import {updateEvent} from "./api/updateEvent.js";
 
@@ -17,25 +17,30 @@ const createEventModal = (e) => {
     // element.classList.add(classDependsFromHeight);
     return element;
 };
-
-const addInputListener = (form, nameInput, listener ,currentEventProps) => {
+const deleteEvent = (formData) => {
+    deleteOneEvent(formData).then(res=> {
+        if (res.status === 200) location.reload()
+        else throw("error")
+    })
+}
+const addInputListener = (form, nameInput, listener, currentEventProps) => {
     const element = form.querySelector(`[name=${nameInput}]`)
-    element.addEventListener(listener, (e) => updateInputData(e, nameInput,currentEventProps))
+    element.addEventListener(listener, (e) => handlerInputData(e, nameInput, currentEventProps))
 }
 
-const updateInputData = (e, nameInput,currentEventProps) => {
+const handlerInputData = (e, nameInput, currentEventProps) => {
+    e.preventDefault()
     const {event_pk: current_event_pk} = currentEventProps;
-
+    let pageReload = false
     const input = e.target
-    console.log("INPUT ",input)
-    const formData = new FormData();
-    formData.append('event', 'update')
 
+    const formData = new FormData();
     formData.append('event_pk', `${current_event_pk}`)
 
     switch (nameInput) {
         case 'date':
             formData.append('event_date', `${input.value}`);
+            pageReload = true
             break;
         case 'start':
             formData.append('time_start', `${input.value}`);
@@ -47,20 +52,24 @@ const updateInputData = (e, nameInput,currentEventProps) => {
             formData.append('allDay', `${input.value}`);
             break;
         case 'description':
-            console.log(input.value)
             formData.append('description', `${input.value}`);
             break;
         case 'title':
             formData.append('event_title', `${input.value}`);
             break;
+        case 'delete':
+            formData.append('event', 'delete')
+            console.log('START')
+            return deleteEvent(formData)
         default:
             break;
     }
+    console.log('END')
+    formData.append('event', 'update')
+    updateEvent(formData).then(res => {
 
-    updateEvent(formData).then(res=> {
-        console.log(res)
-        const {event_pk,event_title,time_start} = res;
-        const id =`[data-id="${event_pk}"]`
+        const {event_pk, event_title, time_start} = res;
+        const id = `[data-id="${event_pk}"]`
 
         const quickEventEl = document.querySelector(id)
         const quickEventElTitle = quickEventEl.querySelector('.quick-event_title')
@@ -73,6 +82,11 @@ const updateInputData = (e, nameInput,currentEventProps) => {
         // console.log(className.includes('type--clr'))
 
         // type--clr-private quick-event past
+        // pageReload && location.reload()
+        pageReload
+        && confirm('This page will be reload. Are you sure?')
+            ? location.reload()
+            : null
     })
 
 
@@ -85,7 +99,7 @@ const onDoubleClick = async (e, currentEl) => {
 
     currentEl.append(popup)
     const eventPk = currentEl.getAttribute('data-id')
-    showPopup(popup, true)
+    showPopup(popup, true, false)
 
     const props = await getOneEvent(eventPk)
 
@@ -93,7 +107,7 @@ const onDoubleClick = async (e, currentEl) => {
 
     const form = popup.querySelector('.create-event')
 
-    eventTypesHandler(popup,eventPk)
+    eventTypesHandler(popup, eventPk)
     const allDayChecked = currentEl.querySelector('.do_allDayCheck')
 
     const timeBlock = currentEl.querySelector('.create-event__time')
@@ -105,13 +119,13 @@ const onDoubleClick = async (e, currentEl) => {
     })
 
 
-    addInputListener(form, 'title', 'input',props)
-    addInputListener(form, 'description', 'input',props)
-    addInputListener(form, 'date', 'change',props)
-    addInputListener(form, 'start', 'change',props)
-    addInputListener(form, 'end', 'change',props)
-    addInputListener(form, 'allDay', 'change',props)
-    addInputListener(form, 'delete', 'click',props)
+    addInputListener(form, 'title', 'input', props)
+    addInputListener(form, 'description', 'input', props)
+    addInputListener(form, 'date', 'change', props)
+    addInputListener(form, 'start', 'change', props)
+    addInputListener(form, 'end', 'change', props)
+    addInputListener(form, 'allDay', 'change', props)
+    addInputListener(form, 'delete', 'click', props)
 
 
 }

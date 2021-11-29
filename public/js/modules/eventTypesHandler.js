@@ -24,6 +24,7 @@ const onTypeClick = (e, target, eventPk) => {
             let currentTypePk = currentType.getAttribute("data-id")
 
             if (typePk === currentTypePk) return
+
             if (eventPk) {
                 const formData = new FormData()
 
@@ -32,10 +33,21 @@ const onTypeClick = (e, target, eventPk) => {
                 formData.append('type_fk', `${typePk}`)
 
                 updateEvent(formData).then(res => {
-                    const {event_pk,type_name} = res
+                    const {event_pk, type_name} = res
 
-                    const id =`[data-id="${event_pk}"]`
+                    const id = `[data-id="${event_pk}"]`
+
                     const quickEventEl = document.querySelector(id)
+
+                    let className = ""
+                    let oldClass = quickEventEl.className.split(' ')
+                    oldClass.forEach(str => {
+                        if (str.match(/type--clr-/g)) className = str
+                    })
+
+                    quickEventEl.classList.remove(className)
+                    quickEventEl.classList.add("type--clr-" + type_name)
+
 
                     // typePopup.classList.remove("show")
                     // hidePopup(typePopup)

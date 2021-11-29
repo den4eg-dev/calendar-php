@@ -1,18 +1,17 @@
-export const outSideClick = (element, remove = false) => {
+export const outSideClick = (element, remove, reload) => {
     const onClickAndRemove = (e) => {
         const path = e.path || (e.composedPath && e.composedPath());
         if (path.includes(element) || element.closest('.typePopup') ) return
 
         hidePopup(element, remove)
-
-
+        reload && window.reload()
         document.body.removeEventListener('click', onClickAndRemove)
     }
     document.body.addEventListener('click', onClickAndRemove)
 }
 
 
-export const showPopup = (popup, remove = false) => {
+export const showPopup = (popup, remove = false,reload = false) => {
     if (!popup.classList.contains('show')) {
         popup.classList.add('show')
         setTimeout(() => {

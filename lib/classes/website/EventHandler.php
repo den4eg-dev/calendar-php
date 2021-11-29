@@ -97,6 +97,7 @@ class EventHandler extends Layout
     {
         $query = "DELETE FROM events
                   WHERE event_pk = '$this->event_pk'";
+
         $this->db->delete($query);
     }
 

@@ -1,4 +1,6 @@
 <?php
+
+
 if (isset($_GET['pk'])) {
     $event_pk = $_GET['pk'];
 
@@ -8,6 +10,20 @@ if (isset($_GET['pk'])) {
 
     header('Content-Type: application/json');
     echo json_encode($event_data);
+    exit;
+}
+
+if (isset($_POST['event']) && $_POST['event'] === "delete") {
+    $event_pk = $_POST['event_pk'];
+    $event = new \website\EventHandler($event_pk);
+    $event->delete();
+
+    $res_status = [
+      'status' => 200
+    ];
+
+    header('Content-Type: application/json');
+    echo json_encode($res_status);
     exit;
 }
 

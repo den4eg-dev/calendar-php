@@ -3,3 +3,12 @@ export const getOneEvent = async (pk) => {
     return await event.json()
 }
 
+export const deleteOneEvent = async (formData) => {
+
+    const deletedEvent = await fetch(`https://www.calendar.den-kaz.com/api/event`,
+        {
+            method: 'POST',
+            body: formData,
+        })
+    return await deletedEvent.json()
+}
