@@ -13,8 +13,6 @@ $event_pk = $this->event_pk;
 <div class="container">
     <h1>EVENT DETAILS</h1>
     <form method="post">
-
-
         <div><label>title<input type="text" name="event_title" value="<?=$event_title?>"></label></div>
         <div><label>date<input type="date" value="<?=@$event_date?>" name="event_date"></label></div>
         <div><label>start<input type="time" value="<?=@$time_start?>" name="time_start"></label></div>

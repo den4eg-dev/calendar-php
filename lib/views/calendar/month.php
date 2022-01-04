@@ -4,6 +4,7 @@ $ym = $this->ym;
 
 $timestamp = $this->timestamp;
 $today = $this->today;
+//$today = date('Y-m-d');
 
 $titleMonth = $this->titleMonth;
 $day_count = $this->day_count;
@@ -42,7 +43,8 @@ for ($i = 1; $i <= ($week_days - 1); $i++) {
 
 for ($day = 1; $day <= $day_count; $day++, $week_days++) {
 //    print_p($day ."====" .$week_days."===" . $day_count);
-    $current_date = $ym . '-' . $day;
+//    $current_date = $ym . '-' . $day;
+    $current_date = $ym . '-' . sprintf("%02d", $day);
 //    print_p($current_date. '====' .$today);
     $date = $ym . '-' . sprintf("%02d", $day);
 

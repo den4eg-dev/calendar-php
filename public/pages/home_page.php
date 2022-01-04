@@ -9,6 +9,4 @@ $layout->getHeader();
 $layout->getContent('<div class="container-lg"><h1>HOME PAGE</h1></div>', true);
 
 
-
-
 $layout->getFooter();

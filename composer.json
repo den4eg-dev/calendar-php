@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/calendar_php",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "den",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
+}

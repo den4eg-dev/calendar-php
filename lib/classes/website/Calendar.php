@@ -41,7 +41,7 @@ class Calendar extends Layout
         $this->timestamp = strtotime($this->ym . '-01');
 
 
-        $this->today = date('Y-m-j');
+        $this->today = date('Y-m-d');
         $this->today_ym = date('Y-m');
 
         $this->title = date('F, Y', $this->timestamp);
@@ -88,9 +88,11 @@ class Calendar extends Layout
 
             if ($current_date == $event["event_date"]) {
 
-                $past = date('Y-m-j') > $event["event_date"] ? 'past' : '';
+                $past = date('Y-m-d') > $event["event_date"] ? 'past' : '';
 
-                $output .= "<div class='type--clr-" . $event['type_name'] . " quick-event $past' data-id='" . $event["event_pk"] . "'>
+                $output .= "<div class='type--clr-"
+                    . $event['type_name'] .
+                    " quick-event $past' data-id='" . $event["event_pk"] . "'>
                              <span class='quick-event_title'>" . $event['event_title'] . "</span>
                              <span class='quick-event_time'>" . $event['time_start'] . "</span>
                         </div>";

@@ -1,6 +1,5 @@
 <?php
 
-
 if (isset($_GET['pk'])) {
     $event_pk = $_GET['pk'];
 
@@ -13,7 +12,10 @@ if (isset($_GET['pk'])) {
     exit;
 }
 
+
+//(isset($_POST['event']) && $_POST['event'] === "delete")
 if (isset($_POST['event']) && $_POST['event'] === "delete") {
+
     $event_pk = $_POST['event_pk'];
     $event = new \website\EventHandler($event_pk);
     $event->delete();

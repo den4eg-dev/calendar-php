@@ -2,6 +2,7 @@
 
 use website\EventHandler;
 
+//$current_date = date('Y-m-d');
 $current_date = $this->today;
 $current_time = date('H:i');
 $timestamp = strtotime($current_time) + 60 * 60;

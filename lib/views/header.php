@@ -30,7 +30,7 @@ foreach ($auth_links as $auth_link => $path) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="color-scheme" content="dark light">
+<!--    <meta name="color-scheme" content="dark">-->
     <!-- Safari   -->
     <meta name="theme-color" media="(prefers-color-scheme: Light)" content="#dcdcdc">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1F1F1F">
@@ -46,6 +46,7 @@ foreach ($auth_links as $auth_link => $path) {
                 "onload='document.documentElement.style.display=''>");
         }
     </script>
+
 
     <link rel="stylesheet" href="/public/css/main.css">
     <link rel="stylesheet" href="/public/css/scheme/light.css" media="(prefers-color-scheme: light)">
